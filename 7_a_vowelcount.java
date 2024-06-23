@@ -1,72 +1,57 @@
-// editor2
 import java.util.*;
-class Simple{
-    public static void remove(String str)
-    {
-        String newstr= new String();
-        int length=str.length();
-        //length=6 if string is "aeiouu"
-        char x=' ';
-        for(int i=0;i<length;i++)
+public class Jejo{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        String st=sc.nextLine();
+        int a=0,e=0,ii=0,o=0,u=0,c=0;
+        for(int i=0;i<st.length();i++)
         {
-            x=str.charAt(i);
-            //converting string values at str to char x !
-            if(newstr.indexOf(x)<0)
-            //indexOf() checks whether the char is already present ! 
+            char ch=st.charAt(i);
+            if(ch=='A'||ch=='a')
+            a++;
+            else if(ch=='E'||ch=='e')
+            e++;
+            else if(ch=='I'||ch=='i')
+            ii++;
+            else if(ch=='O'||ch=='o')
+            o++;
+            else if(ch=='U'||ch=='u')
+            u++;
+            else 
+            c++;
+        }
+        String nstr=" ";
+        for(int i=0;i<st.length();i++)
+        {
+            int f=0;
+            for(int j=0;j<nstr.length();j++){
+                if(st.charAt(i)==nstr.charAt(j))
+                {
+                    f+=1;
+                }
+            }
+            if((f==0)&&(st.charAt(i)!=' '))
             {
-                if(x==' ')
-                continue;
-                // if the last values is empty it comes out of the loop 
-                else
-                newstr+=x;
-                //or it adds values as char at newstr...
+                nstr=nstr+st.charAt(i);
             }
         }
-        System.out.println(newstr);
-        //this is to print out the aeiou instead of aeiouu !
-    }
-    public static void main(String[] args)
-    {
-        Scanner sc=new Scanner(System.in);
-        String x=sc.nextLine();
-        String y=x.toLowerCase();
-        int a=0,e=0,i=0,o=0,u=0,n=0;
-        for(int j=y.length()-1;j>=0;j--)
+        System.out.println(nstr);
+        if(c!=st.length())
         {
-            char d=y.charAt(j);
-            if(d=='a')
-            a++;
-            else if(d=='e')
-            e++;
-            else  if(d=='i')
-            i++;
-            else if(d=='o')
-            o++;
-            else if(d=='u')
-            u++;
-            else
-            n++;
-        }
-        if(n==y.length())
-        {
-            remove(x);
-            //we call remove() to display given string without duplicates 
-            //even though there is no duplicates...
-            System.out.println("No vowels found.");
-        }
-        else
-        {
-            remove(x);
             if(a>0)
             System.out.println("a"+a);
             if(e>0)
             System.out.println("e"+e);
-            if(i>0)
-            System.out.println("i"+i);
+            if(ii>0)
+            System.out.println("i"+ii);
             if(o>0)
             System.out.println("o"+o);
             if(u>0)
             System.out.println("u"+u);
+        }
+        else
+        {
+            System.out.println("No vowels found.");
         }
     }
 }
